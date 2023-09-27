@@ -18,7 +18,7 @@ export const Lists = () => {
         setData([])
         api(`cars?from=${searchParamsFrom}&to=${searchParamsTo}`)
         .then((res:any)=> {
-            console.log(res)
+            console.log(1, res)
             res?.map((item:any) => {
                 setData((e:any) => [...e, item])
             })

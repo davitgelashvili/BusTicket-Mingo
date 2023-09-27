@@ -32,7 +32,7 @@ const data = [
 export const Destinations = () => {
     return (
         <div className={styles.destinations}>
-            <div className='container'>
+            <div className='container' style={{maxWidth: '800px'}}>
                 <SectionTitle title={'შემოთავაზებული მიმართულებები'} />
                 <div className='row'>
                     {

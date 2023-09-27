@@ -1,13 +1,24 @@
-.filter {
-    width: 100%;
-    margin: 100px 0;
-}
-
 .content {
     display: block;
     background-color: #fff;
     border-radius: 100px;
-    border: 1px solid #f8f8f8;
-    padding: 30px 50px;
+    border: 1px solid #E5E8EC;
+    padding: 12px 15px 12px 38px;
     box-shadow: 0px 5px 17px -10px #b4b4b4;
+}
+
+.title {
+    color: #101827;
+    margin-bottom: 9px;
+    font-family: font;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn {
+    padding: 20px;
+    background-color: #2B38D1;
+    border: none;
+    outline: none;
+    border-radius: 50%;
 }

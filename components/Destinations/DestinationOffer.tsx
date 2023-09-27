@@ -10,8 +10,8 @@ export const DestinationOffer = ({item}: any) => {
             className={styles.item}
             >
             <div className={styles.cover} style={{backgroundImage: `url(${item.img})`}}></div>
-            <h1>{item.fromName}</h1>
-            <h3>{item.toName}</h3>
+            <h1 className={styles.from}>{item.fromName}</h1>
+            <h3 className={styles.to}>{item.toName}</h3>
         </Link>
     )
 }

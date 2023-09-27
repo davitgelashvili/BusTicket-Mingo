@@ -2,6 +2,7 @@ import './globals.scss'
 import {Header} from '../components/Header/Header'
 import type { Metadata } from 'next'
 import Providers from '@/store/Providers'
+import Footer from '@/components/Footer/Footer'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,6 +20,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

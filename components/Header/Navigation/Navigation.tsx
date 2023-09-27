@@ -29,7 +29,7 @@ export const Navigation = () => {
                             LOGO
                         </div>
                     </div>
-                    <div className='col-10 d-flex align-items-center'>
+                    <div className='col-9 d-flex align-items-center'>
                         <ul className={styles.list}>
                             {data && data.map( (item:any) => {
                                 return (
@@ -43,7 +43,7 @@ export const Navigation = () => {
                             })}
                         </ul>
                     </div>
-                    <div className='col-1'>
+                    <div className='col-2 d-flex justify-content-end align-items-center'>
                         <Link href={''} className={styles.login}>
                             შესვლა
                         </Link>
