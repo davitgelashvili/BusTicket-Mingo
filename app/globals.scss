@@ -1,0 +1,65 @@
+@font-face {
+    font-family: font;
+    src: url('./../public/fonts/font.ttf');
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.react-datepicker {
+    position: relative;
+    background-color: #fff;
+    
+    &__header {
+        background-color: #cecece;
+    }
+
+    &__current-month {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    &__day-names {
+        display: flex;
+    }
+
+    &__day-name{
+        width: 20px;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    &__week {
+        display: flex;
+    }
+
+    &__day {
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        font-size: 13px;
+        color: #000;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &--disabled {
+            color: #cecece;
+        }
+
+        &--today {
+            background-color: #cecece;
+        }
+
+        &--selected {
+            background-color: black;
+            color: #fff;
+        }
+
+        &--outside-month{
+            color: #cecece;
+        }
+    }
+}
