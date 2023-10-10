@@ -19,7 +19,7 @@ function icon(color:any){
 export const Car = ({data, setTickets, setLoading}: any) => { 
     const handlClick = async(item:any, e:any) => {
         if(!item.reserved){
-            await axios.patch(`http://localhost:8000/cars/reserve-seat?car_id=${data._id}&seat_id=${item.seat_id}`)
+            await axios.patch(`https://destination-nu.vercel.app/cars/reserve-seat?car_id=${data._id}&seat_id=${item.seat_id}`)
             .then(()=>{
                 setTickets((perv:any)=> [...perv, item])
             })

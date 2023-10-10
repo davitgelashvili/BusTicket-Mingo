@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const url = 'http://localhost:8000/'
+const url = 'https://destination-nu.vercel.app/'
 
 const api = async (param: any) => {
     const res = await axios.get(url + param)
