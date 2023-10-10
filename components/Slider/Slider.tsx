@@ -1,17 +1,14 @@
+import Image from 'next/image'
 import { Filter } from '../Filter/Filter'
 import styles from './Slider.module.scss'
-import cover from '@/public/img/Mastercard.png'
 
 export const Slider = () => {
     return (
         <div className={styles.slider}>
-            <div className='container'>
-                <div className={styles.body}>
-                    <h1 className={styles.title}>შეიძინე მინივენის</h1>
-                    <h1 className={styles.title}>ბილეთი ონლაინ</h1>
-                </div>
+            <div className={styles.body}>
+                <h1 className={styles.title}>მინივენის ბილეთები ონლაინ</h1>
+                <Filter />
             </div>
-            <Filter />
         </div>
     )
 }

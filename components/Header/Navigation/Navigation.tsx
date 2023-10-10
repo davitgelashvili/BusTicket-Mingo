@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import styles from './Navigation.module.scss'
+import Image from 'next/image'
+import logo from '@/public/img/logo.svg'
 
 const data = [
     {
@@ -24,12 +26,14 @@ export const Navigation = () => {
         <div className={styles.navigation}>
             <div className='container'>
                 <div className='row'>
-                    <div className='col-1'>
+                    <div className='col-auto d-flex align-items-center'>
                         <div className={styles.logo}>
-                            LOGO
+                            MING
+                            <Image src={logo} alt={'icon'} width={20} height={20} />
+                            .GE
                         </div>
                     </div>
-                    <div className='col-9 d-flex align-items-center'>
+                    <div className='col-8 d-flex align-items-center'>
                         <ul className={styles.list}>
                             {data && data.map( (item:any) => {
                                 return (

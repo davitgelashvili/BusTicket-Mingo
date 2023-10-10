@@ -1,11 +1,15 @@
 "use client"
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Filter.module.scss'
 import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import { useRouter } from 'next/navigation'
-
+import CustomSelect from '../UI/CustomSelect/CustomSelect'
+import CustomCalendar from '../UI/CustomCalendar/CustomCalendar'
+import fromIcon from '@/public/img/filter/Circle.svg'
+import toIcon from '@/public/img/filter/Location.svg'
+import dateIcon from '@/public/img/filter/Date.svg'
 
 const options = [
     { value: 'tbilisi', label: 'თბილისი' },
@@ -22,47 +26,57 @@ export const Filter = () => {
         date: new Date()
     })
 
+    useEffect(()=>{
+        console.log(data)
+    }, [data])
+
     return (
-        <div className='container'>
-            <div className={styles.content}>
-                <div className='row'>
-                    <div className='col-4'>
-                        <p className={styles.title}>საიდან</p>
-                        <Select  
-                            id='1'
+        <div className={styles.filter}>
+            <div className='container'>
+                <div className={styles.content}>
+                    <div className={styles.item}>
+                        <CustomSelect 
+                            icon={fromIcon} 
+                            title={'საიდან'} 
                             options={options} 
                             onChange={(e: any) => {
                                 setData({
                                     ...data,
-                                    from: e.value,
+                                    from: e,
                                 })
-                            }}  />
+                            }}/>
                     </div>
-                    <div className='col-4'>
-                        <p className={styles.title}>სად</p>
-                        <Select 
-                            id='2'
+                    <div className={styles.item}>
+                        <CustomSelect 
+                            icon={toIcon} 
+                            title={'სად'} 
                             options={options} 
                             onChange={(e: any) => {
                                 setData({
                                     ...data,
-                                    to: e.value,
+                                    to: e,
                                 })
-                            }}  />
+                            }}/>
                     </div>
-                    <div className='col-3'>
-                        <p className={styles.title}>თარიღი</p>
-                        <DatePicker
-                            selected={data.date}
-                            onChange={(date:any) => setData({
-                                    ...data,
-                                    date: date,
-                                })
-                            }
-                            minDate={new Date()}
-                        />
+                    <div className={styles.item}>
+                        <CustomCalendar 
+                            icon={dateIcon} 
+                            title={'თარიღი'} 
+                            value={`${data.date.getDate()} / ${data.date.getMonth()}`}
+                            >
+                            <DatePicker
+                                selected={data.date}
+                                inline={true}
+                                minDate={new Date()}
+                                onChange={(date:any) => setData({
+                                        ...data,
+                                        date: date,
+                                    })
+                                }
+                            />
+                        </CustomCalendar>
                     </div>
-                    <div className='col-1 d-flex align-items-center justify-content-end'>
+                    <div className={`${styles.send} d-flex align-items-center justify-content-end`}>
                         <button
                             className={styles.btn}
                             onClick={() => {

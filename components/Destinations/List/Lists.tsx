@@ -5,10 +5,8 @@ import styles from './List.module.scss'
 import { useEffect, useState } from 'react'
 import {Item} from '../Item/Item'
 import { useSearchParams } from 'next/navigation'
-import useRespons from '@/hooks/useRespons'
 
 export const Lists = () => {
-    // const data = useRespons('cars?from=tbilisi&to=batumi')
     const [data,setData] = useState<any>([])
     const searchParamsFrom = useSearchParams().get('from');
     const searchParamsTo = useSearchParams().get('to');
@@ -18,7 +16,6 @@ export const Lists = () => {
         setData([])
         api(`cars?from=${searchParamsFrom}&to=${searchParamsTo}`)
         .then((res:any)=> {
-            console.log(1, res)
             res?.map((item:any) => {
                 setData((e:any) => [...e, item])
             })

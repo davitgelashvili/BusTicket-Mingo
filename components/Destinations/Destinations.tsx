@@ -32,15 +32,13 @@ const data = [
 export const Destinations = () => {
     return (
         <div className={styles.destinations}>
-            <div className='container' style={{maxWidth: '800px'}}>
+            <div className='container'>
                 <SectionTitle title={'შემოთავაზებული მიმართულებები'} />
-                <div className='row'>
+                <div className={styles.list}>
                     {
                         data.map(item => {
                             return (
-                                <div className='col-4' key={item.id}>
-                                    <DestinationOffer item={item}/>
-                                </div>
+                                <DestinationOffer key={item.id} item={item}/>
                             )
                         })
                     }

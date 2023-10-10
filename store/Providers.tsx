@@ -4,10 +4,13 @@ import { store } from "./store"
 import { Provider } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.css'
 import { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Providers = ({children}: {children: React.ReactNode}) => {
 
     useEffect(()=>{
+        AOS.init();
         require("bootstrap/dist/js/bootstrap.bundle.min.js");
     },[])
 

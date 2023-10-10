@@ -4,7 +4,16 @@
 }
 
 .logo {
-    font-size: 24px;
+    display: flex;
+    font-family: 'font';
+    font-weight: 400;
+    font-size: 26px;
+    align-items: center;
+    color: #fff;
+
+    img {
+        background-color: #fff;
+    }
 }
 
 .list {
@@ -22,7 +31,7 @@
 .link {
     padding: 7px;
     font-size: 16px;
-    color: #000;
+    color: #fff;
     text-decoration: none;
     font-family: font;
     font-weight: 500;
