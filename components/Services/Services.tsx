@@ -1,9 +1,9 @@
 import Item from './Item'
 import styles from './Services.module.scss'
-import thermostat from '@/public/img/services/thermostat.svg'
-import battery from '@/public/img/services/battery.svg'
-import wifi from '@/public/img/services/wifi.svg'
-import comfort from '@/public/img/services/comfort.svg'
+import thermostat from '@/public/img/services/new/condition.svg'
+import battery from '@/public/img/services/new/charger.svg'
+import wifi from '@/public/img/services/new/wifi.svg'
+import comfort from '@/public/img/services/new/comfort.svg'
 
 const data = [
     {
@@ -15,7 +15,7 @@ const data = [
     {
         id: 2,
         title: 'დამტენი',
-        desc: 'ტექნიკის დამუხტვი შესაძლებლობა',
+        desc: 'ტექნიკის დამუხტვის შესაძლებლობა',
         icon: battery
     },
     {

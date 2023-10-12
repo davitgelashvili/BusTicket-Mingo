@@ -11,7 +11,11 @@ const CustomCalendar = ({children, title, icon, value}:any) => {
 
     const handleClickOutside = (e:any) => {
         if (
-            e.target.classList.contains('react-datepicker__day')
+            e.target.classList.contains('react-datepicker__day') ||
+            (
+                e.target.classList.contains('react-datepicker__time-list-item') &&
+                e.target.classList.contains('react-datepicker__day')
+            )
         ) {
             console.log(1)
             setTimeout(() => {

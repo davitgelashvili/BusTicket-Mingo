@@ -11,10 +11,28 @@
 
 .react-datepicker {
     position: relative;
-    background-color: #fff;
+    background-color: transparent;
+
+    &__month-container,
+    &__time-container  {
+        float: left;
+    }
+
+    &__time-container {
+        overflow: auto;
+    }
+
+    &__time-list-item {
+        color: #fff;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #41b7d3;
+        }
+    }
     
     &__header {
-        background-color: #cecece;
+        background-color: #41b7d3;
     }
 
     &__current-month {
@@ -27,9 +45,10 @@
     }
 
     &__day-name{
-        width: 20px;
+        width: 40px;
         text-align: center;
         font-size: 13px;
+        font-family: font;
     }
 
     &__week {
@@ -37,16 +56,20 @@
     }
 
     &__day {
-        width: 20px;
-        height: 20px;
-        text-align: center;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 13px;
         color: #000;
         border-radius: 50%;
         cursor: pointer;
+        font-family: font;
 
         &--disabled {
             color: #cecece;
+            cursor: default;
         }
 
         &--today {

@@ -2,6 +2,12 @@
 
 import Link from 'next/link'
 import styles from './Item.module.scss'
+import arrowicon from '@/public/img/arrow.svg'
+import caricon from '@/public/img/car.svg'
+import Image from 'next/image'
+import ItemDate from './ItemDate'
+import ItemTitle from './ItemTitle'
+import useDateFormat from '@/hooks/useDateFormat'
 
 export const Item = ({item}: any) => {
 
@@ -10,26 +16,18 @@ export const Item = ({item}: any) => {
             <div className="row">
                 <div className="col-3">
                     <div className={styles.item}>
-                        <h2>{item.direction_from}</h2>
-                        <h3>{item.date}</h3>
+                        <ItemTitle title={item.direction_from}/>
+                        <ItemDate item={item}/>
                     </div>
                 </div>
                 <div className="col-1">
-                    <div className={`${styles.item} d-flex align-items-center`}>
-                        
+                    <div className={`${styles.item} d-flex align-items-start`}>
+                        <Image src={arrowicon} alt='icon' width={0} height={0} />
                     </div>
                 </div>
                 <div className="col-3">
                     <div className={styles.item}>
-                        <h2>{item.direction_to}</h2>
-                    </div>
-                </div>
-                <div className="col-2">
-                    <div className={styles.item}>
-                        <li>ინტერნეტი</li>
-                        <li>კონდიციონერი</li>
-                        <li>კომფორტი</li>
-                        <li>დამტენი</li>
+                        <ItemTitle title={item.direction_to}/>
                     </div>
                 </div>
                 <div className="col-3">

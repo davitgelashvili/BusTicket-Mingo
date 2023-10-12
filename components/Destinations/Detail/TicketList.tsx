@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState } from 'react';
 import styles from './Detail.module.scss'
 import axios from 'axios';
+import useCityTitle from '@/hooks/useCityTitle';
+import useDateFormat from '@/hooks/useDateFormat';
 
 const TicketList = ({data, setLoading, setTickets, tickets}:any) => {
     
@@ -19,8 +20,11 @@ const TicketList = ({data, setLoading, setTickets, tickets}:any) => {
     return (
         <div className={styles.tickets}>
             <div className={styles.header}>
-                <h1>{data.direction_from} - {data.direction_to}</h1>
-                <p>{data.date}</p>
+                <div className='d-flex align-items-center'>
+                    <h4>{useCityTitle(data.direction_from)} -  {useCityTitle(data.direction_to)} </h4>
+                </div>
+                <p style={{margin: 0}}>{useDateFormat(data.date).getDate()} / {useDateFormat(data.date).getMonth()}</p>
+                <p style={{margin: 0}}>{useDateFormat(data.date).getHours()} : {useDateFormat(data.date).getMinutes()}</p>
             </div>
             <div className={styles.list}>
             {tickets && tickets?.map((item: any, key:any)=> {

@@ -9,6 +9,7 @@
 }
 
 .item {
+    max-width: 240px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,17 +20,25 @@
     height: 30px;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .title {
+    margin-bottom: 24px;
+    text-align: center;
     color: #101827;
-    font-size: 16px;
-    font-weight: 600;
+    font-family: font;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 40px;
 }
 
 .desc {
-    color: rgba(#101827, .7);
-    font-size: 14px;
-    font-weight: 500;
+    margin: 0;
+    text-align: center;
+    color: rgba(#101827, .5);
+    font-family: font;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
 }

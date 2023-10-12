@@ -31,8 +31,8 @@ const data = [
 
 export const Destinations = () => {
     return (
-        <div className={styles.destinations}>
-            <div className='container'>
+        <div className='container'>
+            <div className={styles.destinations}>
                 <SectionTitle title={'შემოთავაზებული მიმართულებები'} />
                 <div className={styles.list}>
                     {

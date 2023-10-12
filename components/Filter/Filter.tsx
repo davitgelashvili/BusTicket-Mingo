@@ -10,6 +10,7 @@ import CustomCalendar from '../UI/CustomCalendar/CustomCalendar'
 import fromIcon from '@/public/img/filter/Circle.svg'
 import toIcon from '@/public/img/filter/Location.svg'
 import dateIcon from '@/public/img/filter/Date.svg'
+import useDateFormat from '@/hooks/useDateFormat'
 
 const options = [
     { value: 'tbilisi', label: 'თბილისი' },
@@ -62,9 +63,10 @@ export const Filter = () => {
                         <CustomCalendar 
                             icon={dateIcon} 
                             title={'თარიღი'} 
-                            value={`${data.date.getDate()} / ${data.date.getMonth()}`}
+                            value={`${useDateFormat(data.date).getDate()} / ${useDateFormat(data.date).getMonth()}`}
                             >
                             <DatePicker
+                                className={'filter-calendar'}
                                 selected={data.date}
                                 inline={true}
                                 minDate={new Date()}

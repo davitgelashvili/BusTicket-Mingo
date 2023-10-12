@@ -1,10 +1,9 @@
 import styles from './Header.module.scss'
 import {Navigation} from './Navigation/Navigation'
-import {TopMenu} from './TopMenu/TopMenu'
 
-export const Header = () => {
+export const Header = ({style}:any) => {
     return (
-        <header className={styles.header}>
+        <header className={styles.header} style={style}>
             <Navigation />
         </header>
     )

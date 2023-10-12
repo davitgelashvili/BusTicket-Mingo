@@ -74,21 +74,28 @@ const AddCar = () => {
         })
     }
 
+    // const [date, setDate] = useState(new Date())
+
+    // useEffect(()=>{
+    //     console.log(date)
+    // }, [date])
+
     return (
         <form>
-            {
-                inputList?.map((item:any)=>{
-                    return (
-
-                        <InputText key={item.id} props={item} inputValue={inputValue} setInputValue={setInputValue} />
-                    )
-                })
-            }
-            <button
-                onClick={handleClick}
-                >
-                დამატება
-            </button>
+            <div style={{width: '400px'}}>
+                {
+                    inputList?.map((item:any)=>{
+                        return (
+                            <InputText key={item.id} props={item} inputValue={inputValue} setInputValue={setInputValue} />
+                        )
+                    })
+                }
+                <button
+                    onClick={handleClick}
+                    >
+                    დამატება
+                </button>
+            </div>
         </form>
     )
 }

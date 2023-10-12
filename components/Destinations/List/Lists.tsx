@@ -5,9 +5,12 @@ import styles from './List.module.scss'
 import { useEffect, useState } from 'react'
 import {Item} from '../Item/Item'
 import { useSearchParams } from 'next/navigation'
+import Skeleton from '@/components/Skeleton/Skeleteno'
+import Loader from './Loader'
 
 export const Lists = () => {
     const [data,setData] = useState<any>([])
+    const [loading, setLoading] = useState(true)
     const searchParamsFrom = useSearchParams().get('from');
     const searchParamsTo = useSearchParams().get('to');
     const searchParamsDate = useSearchParams().get('date');
@@ -19,7 +22,9 @@ export const Lists = () => {
             res?.map((item:any) => {
                 setData((e:any) => [...e, item])
             })
-            
+        })
+        .finally(()=>{
+            setLoading(false)
         })
     },[searchParamsFrom, searchParamsTo, searchParamsDate])
 
@@ -28,6 +33,9 @@ export const Lists = () => {
 
     return (
         <div className={styles.list}>
+            {
+                loading && <Loader />
+            }
             {
                 data?.map((item:any) => {
                     return (
