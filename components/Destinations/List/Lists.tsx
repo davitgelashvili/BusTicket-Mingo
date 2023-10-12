@@ -17,6 +17,7 @@ export const Lists = () => {
 
     useEffect(()=>{
         setData([])
+        setLoading(true)
         api(`cars?from=${searchParamsFrom}&to=${searchParamsTo}`)
         .then((res:any)=> {
             res?.map((item:any) => {
