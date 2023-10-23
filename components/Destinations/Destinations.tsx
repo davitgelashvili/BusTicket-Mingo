@@ -5,10 +5,8 @@ import {DestinationOffer} from './DestinationOffer'
 import SectionTitle from '../SectionTitle/SectionTitle'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
-import { useEffect, useState } from 'react'
 
 export const Destinations = () => {
-    const [screenSize, setScreenSize] = useState(getCurrentDimension());
     const localData = [
         {
             id: 13468,
@@ -79,46 +77,6 @@ export const Destinations = () => {
         }
     ]
 
-    function getCurrentDimension(){
-        return {
-            width: window.innerWidth,
-            height: window.innerHeight
-        }
-    }
-
-    useEffect(() => {
-        const updateDimension = () => {
-          setScreenSize(getCurrentDimension())
-        }
-        window.addEventListener('resize', updateDimension);
-        
-        return(() => {
-            window.removeEventListener('resize', updateDimension);
-        })
-    }, [screenSize])
-
-    function pageCountLocal() {
-        if(screenSize.width >= 1200){
-            return 3
-        }else if (screenSize.width < 1200 && screenSize.width >= 768){
-            return 2
-        }else if (screenSize.width <= 767) {
-            return 1
-        }
-    }
-
-    function pageCountGlobal() {
-        if(screenSize.width >= 1200){
-            return 5
-        }else if (screenSize.width < 1200 && screenSize.width >= 768){
-            return 3
-        }else if (screenSize.width <= 767) {
-            return 2
-        }
-    }
-
-    console.log(screenSize)
-
     return (
         <>
         <div className={styles.destinations}>
@@ -126,28 +84,22 @@ export const Destinations = () => {
                 <SectionTitle title={'ადგილობრივი მიმართულებები'} />
                 <div className={styles.list}>
                     <Swiper
-                        slidesPerView={pageCountLocal()}
                         spaceBetween={25}
+                        slidesPerView={1}
                         breakpoints={{
-                            640: {
-                              slidesPerView: 2,
-                              spaceBetween: 20,
-                            },
                             768: {
-                              slidesPerView: 4,
-                              spaceBetween: 40,
+                                slidesPerView: 2,
                             },
-                            1024: {
-                              slidesPerView: 5,
-                              spaceBetween: 50,
+                            1200: {
+                                slidesPerView: 3,
                             },
                         }}
                         >
                         {
                             localData.map(item => {
                                 return (
-                                    <SwiperSlide>
-                                        <DestinationOffer style={{height: '195px'}} key={item.id} item={item}/>
+                                    <SwiperSlide key={item.id}>
+                                        <DestinationOffer style={{height: '195px'}} item={item}/>
                                     </SwiperSlide>
                                 )
                             })
@@ -161,14 +113,22 @@ export const Destinations = () => {
                 <SectionTitle title={'სატურისტო მიმართულებები'} />
                 <div className={styles.list}>
                     <Swiper
-                        slidesPerView={pageCountGlobal()}
                         spaceBetween={25}
+                        slidesPerView={2}
+                        breakpoints={{
+                            768: {
+                                slidesPerView: 3,
+                            },
+                            1200: {
+                                slidesPerView: 5,
+                            },
+                        }}
                         >
                         {
                             data.map(item => {
                                 return (
-                                    <SwiperSlide>
-                                        <DestinationOffer style={{height: '325px'}} key={item.id} item={item}/>
+                                    <SwiperSlide key={item.id} >
+                                        <DestinationOffer style={{height: '325px'}} item={item}/>
                                     </SwiperSlide>
                                 )
                             })

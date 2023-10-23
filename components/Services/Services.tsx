@@ -36,11 +36,13 @@ const Services = () => {
     return (
         <div className={styles.services}>
             <div className='container'>
-                <div className={styles.list}>
+                <div className="row">
                     {
                         data?.map( (item:any) => {
                             return (
-                                <Item key={item.id} item={item}/>
+                                <div className="col-6 col-lg-3 d-flex justify-content-center" key={item.id} >
+                                    <Item item={item}/>
+                                </div>
                             )
                         })
                     }
