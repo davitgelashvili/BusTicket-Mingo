@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.css'
 import { useEffect } from "react";
 import 'aos/dist/aos.css';
+import '../app/i18n/i18n'
 
 const Providers = ({children}: {children: React.ReactNode}) => {
 

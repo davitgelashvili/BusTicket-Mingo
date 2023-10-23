@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react"
 import styles from "./CustomSelect.module.scss"
 import Image from "next/image"
+import { useTranslation } from "react-i18next"
 
 const CustomSelect = ({options, title, icon, onChange}:any) => {
+    const {t} = useTranslation()
     const [dropdown, setDropdown] = useState(false)
-    const [selected, setSelected] = useState('აირჩიე')
+    const [selected, setSelected] = useState(t('filter.placeholder'))
 
     function handleOptionClick(e:any){
         setDropdown(false)

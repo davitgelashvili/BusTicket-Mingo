@@ -11,6 +11,7 @@ import fromIcon from '@/public/img/filter/Circle.svg'
 import toIcon from '@/public/img/filter/Location.svg'
 import dateIcon from '@/public/img/filter/Date.svg'
 import useDateFormat from '@/hooks/useDateFormat'
+import { useTranslation } from 'react-i18next'
 
 const options = [
     { value: 'tbilisi', label: 'თბილისი' },
@@ -20,6 +21,7 @@ const options = [
 
 export const Filter = () => {
     const router = useRouter()
+    const {t} = useTranslation()
 
     const [data, setData] = useState({
         from: '',
@@ -38,7 +40,7 @@ export const Filter = () => {
                     <div className={styles.item}>
                         <CustomSelect 
                             icon={fromIcon} 
-                            title={'საიდან'} 
+                            title={t('filter.from')} 
                             options={options} 
                             onChange={(e: any) => {
                                 setData({
@@ -50,7 +52,7 @@ export const Filter = () => {
                     <div className={styles.item}>
                         <CustomSelect 
                             icon={toIcon} 
-                            title={'სად'} 
+                            title={t('filter.to')} 
                             options={options} 
                             onChange={(e: any) => {
                                 setData({
@@ -62,7 +64,7 @@ export const Filter = () => {
                     <div className={styles.item}>
                         <CustomCalendar 
                             icon={dateIcon} 
-                            title={'თარიღი'} 
+                            title={t('filter.date')} 
                             value={`${useDateFormat(data.date).getDate()} / ${useDateFormat(data.date).getMonth()}`}
                             >
                             <DatePicker

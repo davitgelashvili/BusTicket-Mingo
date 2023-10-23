@@ -1,27 +1,32 @@
+"use client"
+
 import Link from 'next/link'
 import styles from './Navigation.module.scss'
 import Image from 'next/image'
 import logo from '@/public/img/logo.svg'
+import { useTranslation } from 'react-i18next'
 
-const data = [
-    {
-        id:1,
-        title: 'მთავარი',
-        url: '/'
-    },
-    {
-        id:2,
-        title: 'ჩვენს შესახებ',
-        url: '/'
-    },
-    {
-        id:3,
-        title: 'კონტაქტი',
-        url: '/'
-    }
-]
 
 export const Navigation = () => {
+    const {t} = useTranslation()
+    const data = [
+        {
+            id:1,
+            title: t('menu.home'),
+            url: '/'
+        },
+        {
+            id:2,
+            title: t('menu.aboutus'),
+            url: '/'
+        },
+        {
+            id:3,
+            title: t('menu.contact'),
+            url: '/'
+        }
+    ]
+
     return (
         <div className={styles.navigation}>
             <div className='container'>

@@ -1,18 +1,14 @@
 .destinations {
     margin: 100px auto;
-    width: calc(291px * 3);
+    width: 100%;
 }
 
 .list {
-    width: 100%;
-    margin: 0 -12px;
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
 }
 
 .item {
-    width: 291px;
-    padding: 0 12px;
+    width: 100%;
     flex-grow: 1;
     font-size: 16px;
     display: block;
@@ -20,7 +16,7 @@
 }
 
 .cover {
-    height: 367px;
+    height: 307px;
     margin-bottom: 15px;
     border-radius: 8px;
     background-position: top;
