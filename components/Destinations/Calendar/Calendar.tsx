@@ -16,10 +16,8 @@ const Calendar = () => {
     }, [filter])
 
     useEffect(()=>{
-        // useDateFormat(date).getDate()
-        // useDateFormat(date).getMonth()
-        dispatch(filterDataAction.changeFilterDate(useDateFormat(date).getDate()))
-    },[dispatch])
+        dispatch(filterDataAction.changeFilterDate(date))
+    },[dispatch, date])
 
     return (
         <div>
@@ -29,7 +27,7 @@ const Calendar = () => {
                 minDate={new Date()}
                 calendarStartDay={1}
                 onChange={(date:any) => {
-                    setDate(date)
+                    setDate(`${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`)
                 }}
             />
         </div>
