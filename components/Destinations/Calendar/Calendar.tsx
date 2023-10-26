@@ -5,7 +5,6 @@ import DatePicker from "react-datepicker"
 import { useDispatch, useSelector } from "react-redux"
 import { filterDataAction } from '@/store/filter'
 import useDateFormat from "@/hooks/useDateFormat"
-import { useRouter } from "next/navigation"
 
 const Calendar = () => {
     const dispatch = useDispatch()
@@ -15,10 +14,6 @@ const Calendar = () => {
         // 
     }, [filter])
 
-    function x(date:any) {
-        return `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
-    }
-
     return (
         <div>
             <DatePicker
@@ -27,9 +22,9 @@ const Calendar = () => {
                 minDate={new Date()}
                 calendarStartDay={1}
                 onChange={(date:any) => {
-                    let w = x(date)
+                    let x = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
                     setTimeout(() => {
-                        dispatch(filterDataAction.changeFilterDate(w))
+                        dispatch(filterDataAction.changeFilterDate(x))
                     }, 300);
                 }}
             />
