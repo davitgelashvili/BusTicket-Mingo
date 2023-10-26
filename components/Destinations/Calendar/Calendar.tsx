@@ -15,6 +15,10 @@ const Calendar = () => {
         // 
     }, [filter])
 
+    function x(date:any) {
+        return `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
+    }
+
     return (
         <div>
             <DatePicker
@@ -23,8 +27,7 @@ const Calendar = () => {
                 minDate={new Date()}
                 calendarStartDay={1}
                 onChange={(date:any) => {
-                    let x = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
-                    dispatch(filterDataAction.changeFilterDate(x))
+                    dispatch(filterDataAction.changeFilterDate(x(date)))
                 }}
             />
         </div>

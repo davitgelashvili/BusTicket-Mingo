@@ -30,6 +30,10 @@ export const Filter = () => {
         console.log(filter)
     }, [dispatch, filter])
 
+    function x(date:any) {
+        return `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
+    }
+
     return (
         <div className={styles.filter}>
             <div className='container'>
@@ -67,8 +71,7 @@ export const Filter = () => {
                                 inline={true}
                                 minDate={new Date()}
                                 onChange={(date:any) => {
-                                    let x = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
-                                    dispatch(filterDataAction.changeFilterDate(x))
+                                    dispatch(filterDataAction.changeFilterDate(x(date)))
                                 }}
                             />
                         </CustomCalendar>
