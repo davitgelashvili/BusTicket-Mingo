@@ -67,7 +67,8 @@ export const Filter = () => {
                                 inline={true}
                                 minDate={new Date()}
                                 onChange={(date:any) => {
-                                    dispatch(filterDataAction.changeFilterDate(`${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`))
+                                    let x = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
+                                    dispatch(filterDataAction.changeFilterDate(x))
                                 }}
                             />
                         </CustomCalendar>

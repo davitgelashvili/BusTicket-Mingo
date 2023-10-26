@@ -23,7 +23,8 @@ const Calendar = () => {
                 minDate={new Date()}
                 calendarStartDay={1}
                 onChange={(date:any) => {
-                    dispatch(filterDataAction.changeFilterDate(`${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`))
+                    let x = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
+                    dispatch(filterDataAction.changeFilterDate(x))
                 }}
             />
         </div>
