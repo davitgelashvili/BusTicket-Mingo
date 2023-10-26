@@ -1,3 +1,4 @@
+import useDateFormat from '@/hooks/useDateFormat'
 import styles from './Destinations.module.scss'
 import Link from 'next/link'
 
@@ -6,12 +7,12 @@ export const DestinationOffer = ({item, style}: any) => {
     
     return (
         <Link 
-            href={`destination?from=${item.fromValue}&to=${item.toValue}&date=${date.getDate()}`}
+            href={`destination?from=${item.fromValue}&to=${item.toValue}&date=${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`}
             className={styles.item}
             >
             <div className={styles.cover} style={{backgroundImage: `url(${item.img})`, ...style}}></div>
-            <h1 className={styles.from}>{item.fromName}</h1>
-            <h3 className={styles.to}>{item.toName}</h3>
+            <h2 className={styles.from}>{item.fromName}</h2>
+            <h1 className={styles.to}>{item.toName}</h1>
         </Link>
     )
 }

@@ -17,22 +17,24 @@
 
 .cover {
     height: 307px;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     border-radius: 8px;
     background-position: top;
     background-size: cover;
 }
 
 .from {
-    color: #101827;
-    font-size: 18px;
-    font-weight: 500;
-    font-family: font;
-}
-
-.to {
     color: rgba(#101827, .7);
     font-size: 16px;
     font-weight: 400;
     font-family: font;
+    margin: 0 0 8px 0;
+}
+
+.to {
+    color: #101827;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: font;
+    margin: 0;
 }

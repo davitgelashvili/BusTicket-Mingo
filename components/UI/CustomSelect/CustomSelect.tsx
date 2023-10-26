@@ -4,15 +4,17 @@ import { useEffect, useState } from "react"
 import styles from "./CustomSelect.module.scss"
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
+import { useSelector } from "react-redux"
 
-const CustomSelect = ({options, title, icon, onChange}:any) => {
+const CustomSelect = ({options, title, icon, onChange, selected}:any) => {
     const {t} = useTranslation()
     const [dropdown, setDropdown] = useState(false)
-    const [selected, setSelected] = useState(t('filter.placeholder'))
+    // const [selected, setSelected] = useState(t('filter.placeholder'))
+    const filter = useSelector((state:any) => state.filterData)
 
     function handleOptionClick(e:any){
         setDropdown(false)
-        setSelected(e.target.getAttribute("data-name"))
+        // setSelected(e.target.getAttribute("data-name"))
         onChange(e.target.getAttribute("data-value"))
     };
 
@@ -60,7 +62,7 @@ const CustomSelect = ({options, title, icon, onChange}:any) => {
                                 data-value={item.value}
                                 data-name={item.label}
                                 onClick={handleOptionClick}
-                                    >
+                                >
                                     {item.label}
                                 </li>
                         )

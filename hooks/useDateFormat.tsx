@@ -19,6 +19,10 @@ const useDateFormat = (date:any) => {
         getMinutes: () => {
             let minutes = itemDate.getMinutes()
             return minutes < 10 ? '0' + minutes : minutes
+        },
+        getYear: () => {
+            let year = itemDate.getFullYear()
+            return year
         }
     } 
 

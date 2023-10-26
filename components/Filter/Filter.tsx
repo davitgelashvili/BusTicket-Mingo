@@ -12,6 +12,8 @@ import toIcon from '@/public/img/filter/Location.svg'
 import dateIcon from '@/public/img/filter/Date.svg'
 import useDateFormat from '@/hooks/useDateFormat'
 import { useTranslation } from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux'
+import { filterDataAction } from '@/store/filter'
 
 const options = [
     { value: 'tbilisi', label: 'თბილისი' },
@@ -22,16 +24,12 @@ const options = [
 export const Filter = () => {
     const router = useRouter()
     const {t} = useTranslation()
-
-    const [data, setData] = useState({
-        from: '',
-        to: '',
-        date: new Date()
-    })
+    const dispatch = useDispatch()
+    const filter = useSelector((state:any) => state.filterData)
 
     useEffect(()=>{
-        console.log(data)
-    }, [data])
+        console.log(filter)
+    }, [dispatch, filter])
 
     return (
         <div className={styles.filter}>
@@ -42,11 +40,10 @@ export const Filter = () => {
                             icon={fromIcon} 
                             title={t('filter.from')} 
                             options={options} 
+                            selected={filter.from}
                             onChange={(e: any) => {
-                                setData({
-                                    ...data,
-                                    from: e,
-                                })
+                                console.log(e)
+                                dispatch(filterDataAction.changeFilterFrom(e))
                             }}/>
                     </div>
                     <div className={styles.item}>
@@ -54,29 +51,25 @@ export const Filter = () => {
                             icon={toIcon} 
                             title={t('filter.to')} 
                             options={options} 
+                            selected={filter.to}
                             onChange={(e: any) => {
-                                setData({
-                                    ...data,
-                                    to: e,
-                                })
+                                dispatch(filterDataAction.changeFilterTo(e))
                             }}/>
                     </div>
                     <div className={styles.item}>
                         <CustomCalendar 
                             icon={dateIcon} 
                             title={t('filter.date')} 
-                            value={`${useDateFormat(data.date).getDate()} / ${useDateFormat(data.date).getMonth()}`}
+                            value={filter.date}
                             >
                             <DatePicker
                                 className={'filter-calendar'}
-                                selected={data.date}
+                                selected={new Date()}
                                 inline={true}
                                 minDate={new Date()}
-                                onChange={(date:any) => setData({
-                                        ...data,
-                                        date: date,
-                                    })
-                                }
+                                onChange={(date:any) => {
+                                    dispatch(filterDataAction.changeFilterDate(`${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`))
+                                }}
                             />
                         </CustomCalendar>
                     </div>
@@ -85,10 +78,10 @@ export const Filter = () => {
                             className={styles.btn}
                             onClick={() => {
                                 if(
-                                    data.from !== ''&&
-                                    data.to !== ''
+                                    filter.from !== ''&&
+                                    filter.to !== ''
                                 ) {
-                                    router.push(`destination?from=${data.from}&to=${data.to}&date=${data.date.getTime()}`)
+                                    router.push(`destination?from=${filter.from}&to=${filter.to}&date=${filter.date}`)
                                 }
                             }}
                             >

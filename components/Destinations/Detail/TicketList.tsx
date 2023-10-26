@@ -8,7 +8,7 @@ import useDateFormat from '@/hooks/useDateFormat';
 const TicketList = ({data, setLoading, setTickets, tickets}:any) => {
     
     const handleClick = async(tkt:any) => {
-        await axios.patch(`https://destination-nu.vercel.app/cars/delete-reserve?car_id=${data._id}&seat_id=${tkt.seat_id}`)
+        await axios.patch(`http://localhost:8000/cars/delete-reserve?car_id=${data._id}&seat_id=${tkt.seat_id}`)
         .then(()=>{
             setTickets([])
         })

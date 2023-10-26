@@ -5,8 +5,10 @@ import {DestinationOffer} from './DestinationOffer'
 import SectionTitle from '../SectionTitle/SectionTitle'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
+import { useTranslation } from 'react-i18next'
 
 export const Destinations = () => {
+    const {t} = useTranslation()
     const localData = [
         {
             id: 13468,
@@ -81,7 +83,7 @@ export const Destinations = () => {
         <>
         <div className={styles.destinations}>
             <div className='container'>
-                <SectionTitle title={'ადგილობრივი მიმართულებები'} />
+                <SectionTitle title={t('locationDestination.header')} />
                 <div className={styles.list}>
                     <Swiper
                         spaceBetween={25}
@@ -110,7 +112,7 @@ export const Destinations = () => {
         </div>
         <div className={styles.destinations}>
             <div className='container'>
-                <SectionTitle title={'სატურისტო მიმართულებები'} />
+                <SectionTitle title={t('touristDestination.header')} />
                 <div className={styles.list}>
                     <Swiper
                         spaceBetween={25}

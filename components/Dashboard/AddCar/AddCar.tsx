@@ -6,13 +6,16 @@ import { useEffect, useState } from "react"
 
 const AddCar = () => {
     const [inputValue, setInputValue] = useState({
-        plate: '',
-        driver_name: '',
-        direction_from: '',
-        direction_to: '',
+        plate: 'da-100-to',
+        driver_name: 'test name',
+        direction_from: 'tbilisi',
+        direction_to: 'batumi',
         date: '',
+        getDate: '',
+        getTime: '',
         seat_count: 8,
     })
+    // const nowDate  = `${useDateFormat(inputValue.date).getDate()}-${useDateFormat(inputValue.date).getMonth()}-${useDateFormat(inputValue.date).getYear()} ${useDateFormat(inputValue.date).getHours()}:${useDateFormat(inputValue.date).getMinutes()}`
 
     const inputList = [
         {
@@ -65,20 +68,13 @@ const AddCar = () => {
         }
     ]
 
-
     const handleClick = async(e:any) => {
         e.preventDefault()
-        await axios.post(`https://destination-nu.vercel.app/cars`, inputValue)
+        await axios.post(`http://localhost:8000/cars`, inputValue)
         .finally(()=>{
-            console.log(inputValue)
+            console.log('დაემატა')
         })
     }
-
-    // const [date, setDate] = useState(new Date())
-
-    // useEffect(()=>{
-    //     console.log(date)
-    // }, [date])
 
     return (
         <form>

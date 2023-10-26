@@ -1,11 +1,15 @@
+"use client"
+
 import styles from './Cars.module.scss'
 import SectionTitle from '../SectionTitle/SectionTitle'
 import { Item } from './Item'
 import minivenCover from './../../public/img/cars/miniven.png'
 import busCover from '@/public/img/cars/bus.png'
 import sedanCover from '@/public/img/cars/sedan.png'
+import { useTranslation } from 'react-i18next'
 
 export const Cars = () => {
+    const {t} = useTranslation()
     const data = [
         {
             id: 1,
@@ -36,7 +40,7 @@ export const Cars = () => {
     return (
         <div className={styles.cars}>
             <div className='container'>
-                <SectionTitle title={'ჩვენი ავტომობილები'} />
+                <SectionTitle title={t('cars.header')} />
                 <div className={styles.list}>
                     {
                         data.map(item => {
