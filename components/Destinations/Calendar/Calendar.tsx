@@ -7,12 +7,17 @@ import { filterDataAction } from '@/store/filter'
 import useDateFormat from "@/hooks/useDateFormat"
 
 const Calendar = () => {
+    const [date, setDate] = useState('')
     const dispatch = useDispatch()
     const filter = useSelector((state:any) => state.filterData)
 
     useEffect(()=>{
         // 
     }, [filter])
+
+    useEffect(()=>{
+        dispatch(filterDataAction.changeFilterDate(`${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`))
+    },[date])
 
     return (
         <div>
@@ -22,10 +27,7 @@ const Calendar = () => {
                 minDate={new Date()}
                 calendarStartDay={1}
                 onChange={(date:any) => {
-                    let x = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
-                    setTimeout(() => {
-                        dispatch(filterDataAction.changeFilterDate(x))
-                    }, 300);
+                    setDate(date)
                 }}
             />
         </div>
