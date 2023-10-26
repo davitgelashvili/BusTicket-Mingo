@@ -16,7 +16,9 @@ const Calendar = () => {
     }, [filter])
 
     useEffect(()=>{
-        dispatch(filterDataAction.changeFilterDate(`${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`))
+        useDateFormat(date).getDate()
+        useDateFormat(date).getMonth()
+        dispatch(filterDataAction.changeFilterDate(useDateFormat(date).getDate()))
     },[date])
 
     return (
