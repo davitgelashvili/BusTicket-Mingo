@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import styles from './Filter.module.scss'
-import Select from 'react-select'
 import DatePicker from 'react-datepicker'
 import { useRouter } from 'next/navigation'
 import CustomSelect from '../UI/CustomSelect/CustomSelect'
