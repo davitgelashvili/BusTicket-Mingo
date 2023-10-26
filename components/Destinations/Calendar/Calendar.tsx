@@ -19,7 +19,7 @@ const Calendar = () => {
         // useDateFormat(date).getDate()
         // useDateFormat(date).getMonth()
         dispatch(filterDataAction.changeFilterDate(useDateFormat(date).getDate()))
-    },[])
+    },[dispatch])
 
     return (
         <div>
