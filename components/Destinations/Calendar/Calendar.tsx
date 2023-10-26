@@ -27,7 +27,10 @@ const Calendar = () => {
                 minDate={new Date()}
                 calendarStartDay={1}
                 onChange={(date:any) => {
-                    dispatch(filterDataAction.changeFilterDate(x(date)))
+                    let w = x(date)
+                    setTimeout(() => {
+                        dispatch(filterDataAction.changeFilterDate(w))
+                    }, 300);
                 }}
             />
         </div>

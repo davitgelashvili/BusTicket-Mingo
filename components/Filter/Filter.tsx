@@ -71,7 +71,10 @@ export const Filter = () => {
                                 inline={true}
                                 minDate={new Date()}
                                 onChange={(date:any) => {
-                                    dispatch(filterDataAction.changeFilterDate(x(date)))
+                                    let w = x(date)
+                                    setTimeout(() => {
+                                        dispatch(filterDataAction.changeFilterDate(w))
+                                    }, 300);
                                 }}
                             />
                         </CustomCalendar>
