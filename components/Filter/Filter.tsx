@@ -29,7 +29,7 @@ export const Filter = () => {
     const searchParamsDate = useSearchParams().get('date');
 
     useEffect(()=>{
-        dispatch(filterDataAction.changeFilterDate(useDateFormat(date).getMonth()))
+        // dispatch(filterDataAction.changeFilterDate(useDateFormat(date).getMonth()))
     }, [date])
 
     // dispatch(filterDataAction.changeFilterDate(date))
@@ -71,7 +71,8 @@ export const Filter = () => {
                                 inline={true}
                                 minDate={new Date()}
                                 onChange={(date:any) => {
-                                    setDate(date)
+                                    let x =  useDateFormat(date).getMonth()
+                                    setDate(x)
                                 }}
                             />
                         </CustomCalendar>
