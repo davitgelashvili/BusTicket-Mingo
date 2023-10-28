@@ -19,7 +19,7 @@ const Calendar = () => {
     return (
         <div>
             <DatePicker
-                selected={new Date(`${filter.date.split('-')[1]}/${filter.date.split('-')[0]}/2023`)}
+                selected={new Date()}
                 inline={true}
                 minDate={new Date()}
                 calendarStartDay={1}
