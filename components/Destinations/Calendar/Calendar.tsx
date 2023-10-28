@@ -12,13 +12,9 @@ const Calendar = () => {
     const filter = useSelector((state:any) => state.filterData)
 
     useEffect(()=>{
-        // 
-    }, [filter])
-
-    useEffect(()=>{
         // ${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}
-        dispatch(filterDataAction.changeFilterDate(date))
-    },[dispatch, date])
+        // dispatch(filterDataAction.changeFilterDate(filter.date))
+    },[])
 
     return (
         <div>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import styles from './Filter.module.scss'
 import DatePicker from 'react-datepicker'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import CustomSelect from '../UI/CustomSelect/CustomSelect'
 import CustomCalendar from '../UI/CustomCalendar/CustomCalendar'
 import fromIcon from '@/public/img/filter/Circle.svg'
@@ -21,14 +21,18 @@ const options = [
 ]
 
 export const Filter = () => {
+    const [date, setDate] = useState('')
     const router = useRouter()
     const {t} = useTranslation()
     const dispatch = useDispatch()
     const filter = useSelector((state:any) => state.filterData)
+    const searchParamsDate = useSearchParams().get('date');
 
     useEffect(()=>{
-        console.log(filter)
-    }, [dispatch, filter])
+        dispatch(filterDataAction.changeFilterDate(useDateFormat(date).getMonth()))
+    }, [date])
+
+    // dispatch(filterDataAction.changeFilterDate(date))
 
     return (
         <div className={styles.filter}>
@@ -67,10 +71,7 @@ export const Filter = () => {
                                 inline={true}
                                 minDate={new Date()}
                                 onChange={(date:any) => {
-                                    let x = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
-                                    setTimeout(() => {
-                                        dispatch(filterDataAction.changeFilterDate(x))
-                                    }, 300);
+                                    setDate(date)
                                 }}
                             />
                         </CustomCalendar>
