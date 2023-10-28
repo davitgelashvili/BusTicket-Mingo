@@ -28,8 +28,8 @@ export const Filter = () => {
     const filter = useSelector((state:any) => state.filterData)
     const searchParamsDate = useSearchParams().get('date');
 
+    let x = useDateFormat(date).getMonth()
     useEffect(()=>{
-        let x = useDateFormat(date).getMonth()
         dispatch(filterDataAction.changeFilterDate(x))
     }, [date])
 
