@@ -21,16 +21,16 @@ const options = [
 ]
 
 export const Filter = () => {
-    const [date, setDate] = useState('')
+    const [date, setDate] = useState(new Date())
     const router = useRouter()
     const {t} = useTranslation()
     const dispatch = useDispatch()
     const filter = useSelector((state:any) => state.filterData)
     const searchParamsDate = useSearchParams().get('date');
 
-    let x = useDateFormat(date).getMonth()
+    const getDate = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
     useEffect(()=>{
-        dispatch(filterDataAction.changeFilterDate(x))
+        dispatch(filterDataAction.changeFilterDate(getDate))
     }, [date])
 
     // dispatch(filterDataAction.changeFilterDate(date))
@@ -68,7 +68,7 @@ export const Filter = () => {
                             >
                             <DatePicker
                                 className={'filter-calendar'}
-                                selected={new Date()}
+                                selected={date}
                                 inline={true}
                                 minDate={new Date()}
                                 onChange={(date:any) => {
