@@ -7,6 +7,7 @@ import filter from './filter.module'
 import destination from './destination.module'
 import cars from './cars.module'
 import services from './services.module'
+import city from './city.module'
 
 i18n
     .use(initReactI18next)
@@ -20,6 +21,7 @@ i18n
                     ...destination.en,
                     ...cars.en,
                     ...services.en,
+                    ...city.en,
                 }
             },
             ka: {
@@ -29,6 +31,7 @@ i18n
                     ...destination.ka,
                     ...cars.ka,
                     ...services.ka,
+                    ...city.ka,
                 }
             }
         }

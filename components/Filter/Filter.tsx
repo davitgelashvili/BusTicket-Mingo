@@ -13,12 +13,7 @@ import useDateFormat from '@/hooks/useDateFormat'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterDataAction } from '@/store/filter'
-
-const options = [
-    { value: 'tbilisi', label: 'თბილისი' },
-    { value: 'batumi', label: 'ბათუმი' },
-    { value: 'poti', label: 'ფოთი' }
-]
+import useCityTitle from '@/hooks/useCityTitle'
 
 export const Filter = () => {
     const [fullDate, setFullDate] = useState()
@@ -27,6 +22,12 @@ export const Filter = () => {
     const dispatch = useDispatch()
     const filter = useSelector((state:any) => state.filterData)
     const getDate = `${useDateFormat(fullDate).getDate()}-${useDateFormat(fullDate).getMonth()}`
+
+    const options = [
+        { value: 'tbilisi', label: useCityTitle('tbilisi') },
+        { value: 'batumi', label: useCityTitle('batumi') },
+        { value: 'poti', label: useCityTitle('poti') }
+    ]
     
     useEffect(()=>{
         dispatch(filterDataAction.changeFilterDate(getDate))

@@ -5,6 +5,7 @@ import styles from "./CustomSelect.module.scss"
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
+import useCityTitle from "@/hooks/useCityTitle"
 
 const CustomSelect = ({options, title, icon, onChange, selected}:any) => {
     const {t} = useTranslation()
@@ -46,7 +47,7 @@ const CustomSelect = ({options, title, icon, onChange, selected}:any) => {
                         <Image src={icon} alt="icon" width={0} height={0} />
                         {title}:
                         <span>
-                            {selected}
+                            {useCityTitle(selected)}
                         </span>
                 </p>
             </div>
