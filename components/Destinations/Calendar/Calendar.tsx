@@ -2,29 +2,40 @@
 
 import { useEffect, useState } from "react"
 import DatePicker from "react-datepicker"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { filterDataAction } from '@/store/filter'
 import useDateFormat from "@/hooks/useDateFormat"
+import { useRouter, useSearchParams } from "next/navigation"
 
 const Calendar = () => {
-    const [date, setDate] = useState(new Date())
+    const router = useRouter()
+    const [fullDate, setFullDate] = useState()
     const dispatch = useDispatch()
-    const filter = useSelector((state:any) => state.filterData)
-    const getDate = `${useDateFormat(date).getDate()}-${useDateFormat(date).getMonth()}`
+    const getDate = `${useDateFormat(fullDate).getDate()}-${useDateFormat(fullDate).getMonth()}`
+    const searchParamsFrom = useSearchParams().get('from');
+    const searchParamsTo = useSearchParams().get('to');
+    const searchParamsDate = useSearchParams().get('date');
+    
+    useEffect(()=>{
+        router.push(`destination?from=${searchParamsFrom}&to=${searchParamsTo}&date=${getDate}`)
+    }, [getDate])
 
     useEffect(()=>{
-        dispatch(filterDataAction.changeFilterDate(getDate))
-    }, [filter])
+        dispatch(filterDataAction.changeFilterFrom(searchParamsFrom))
+        dispatch(filterDataAction.changeFilterTo(searchParamsTo))
+        dispatch(filterDataAction.changeFilterDate(searchParamsDate))
+        router.push(`destination?from=${searchParamsFrom}&to=${searchParamsTo}&date=${searchParamsDate}`)
+    }, [searchParamsFrom, searchParamsTo, searchParamsDate])
 
     return (
         <div>
             <DatePicker
-                selected={date}
+                selected={new Date()}
                 inline={true}
                 minDate={new Date()}
                 calendarStartDay={1}
                 onChange={(date:any) => {
-                    setDate(date)
+                    setFullDate(date)
                 }}
             />
         </div>

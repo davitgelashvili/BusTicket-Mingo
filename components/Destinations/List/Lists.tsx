@@ -5,7 +5,6 @@ import styles from './List.module.scss'
 import { useEffect, useState } from 'react'
 import {Item} from '../Item/Item'
 import { useRouter, useSearchParams } from 'next/navigation'
-import Skeleton from '@/components/Skeleton/Skeleteno'
 import Loader from './Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterDataAction } from '@/store/filter'
@@ -23,7 +22,7 @@ export const Lists = ({date}:any) => {
     useEffect(()=>{
         router.push(`destination?from=${filter.from}&to=${filter.to}&date=${filter.date}`)
         setLoading(true)
-        api(`cars?from=${filter.from}&to=${filter.to}&getDate=${filter.date}`)
+        api(`cars?from=${searchParamsFrom}&to=${searchParamsTo}&getDate=${searchParamsDate}`)
         .then((res:any)=> {
             setData([])
             res?.map((item:any) => {
@@ -32,17 +31,11 @@ export const Lists = ({date}:any) => {
         })
         .finally(()=>{
             setLoading(false)
+            dispatch(filterDataAction.changeFilterFrom(searchParamsFrom))
+            dispatch(filterDataAction.changeFilterTo(searchParamsTo))
+            dispatch(filterDataAction.changeFilterDate(searchParamsDate))
         })
-    },[filter])
-
-    useEffect(()=>{
-        dispatch(filterDataAction.changeFilterFrom(searchParamsFrom))
-        dispatch(filterDataAction.changeFilterTo(searchParamsTo))
-        dispatch(filterDataAction.changeFilterDate(searchParamsDate))
-    }, [searchParamsFrom, searchParamsTo, searchParamsDate])
-
-
-
+    },[searchParamsFrom, searchParamsTo, searchParamsDate])
 
     return (
         <div className={styles.list}>
