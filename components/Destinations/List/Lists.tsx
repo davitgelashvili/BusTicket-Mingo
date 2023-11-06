@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Loader from './Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterDataAction } from '@/store/filter'
+import useDateFormat from '@/hooks/useDateFormat'
 
 export const Lists = ({date}:any) => {
     const router = useRouter()
@@ -49,7 +50,6 @@ export const Lists = ({date}:any) => {
             // res?.map((item:any) => {
             //     setData((e:any) => [...e, item])
             // })
-            console.log(res[0])
         })
         .finally(()=>{
             setLoading(false)
@@ -65,13 +65,21 @@ export const Lists = ({date}:any) => {
                 loading && <Loader />
             }
             {
-                time.map((t:any) => {
-                    if(new Date().getHours() < t.split(' ')[0]){
+                data ? time.map((t:any) => {
+                    if(searchParamsDate?.split('-')[0] == useDateFormat(new Date()).getDate()){
+                        if(new Date().getHours() < t.split(' ')[0]){
+                            return (
+                                <Item key={t} item={data} time={t} />
+                            )
+                        }
+                    }else {
                         return (
                             <Item key={t} item={data} time={t} />
                         )
                     }
-                })
+                }) : (
+                    <h1>ინფორმაცია არ მოიძებნა</h1>
+                )
             }
         </div>
     )

@@ -5,6 +5,7 @@ const initalData = {
     from: '',
     to: '',
     date:  `${useDateFormat(new Date()).getDate()}-${useDateFormat(new Date()).getMonth()}`,
+    calendarDate:  String(new Date()),
 }
 
 const filterData = createSlice({
@@ -19,6 +20,9 @@ const filterData = createSlice({
         },
         changeFilterDate(state, action) {
             state.date = action.payload
+        },
+        changeCalendarDate(state, action) {
+            state.calendarDate = action.payload
         }
     }
 })

@@ -16,7 +16,7 @@ import { filterDataAction } from '@/store/filter'
 import useCityTitle from '@/hooks/useCityTitle'
 
 export const Filter = () => {
-    const [fullDate, setFullDate] = useState()
+    const [fullDate, setFullDate] = useState(new Date())
     const router = useRouter()
     const {t} = useTranslation()
     const dispatch = useDispatch()
@@ -65,11 +65,12 @@ export const Filter = () => {
                             >
                             <DatePicker
                                 className={'filter-calendar'}
-                                selected={new Date()}
+                                selected={new Date(filter.calendarDate)}
                                 inline={true}
                                 minDate={new Date()}
                                 onChange={(date:any) => {
                                     setFullDate(date)
+                                    dispatch(filterDataAction.changeCalendarDate(String(date)))
                                 }}
                             />
                         </CustomCalendar>

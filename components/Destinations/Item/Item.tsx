@@ -12,11 +12,11 @@ import useDateFormat from '@/hooks/useDateFormat'
 export const Item = ({item, time}: any) => {
 
     return (
-        <div key={item.id} className={styles.item_list}>
+        <div key={item?.id} className={styles.item_list}>
             <div className="row">
                 <div className="col-3">
                     <div className={styles.item}>
-                        <ItemTitle title={item.direction_from}/>
+                        <ItemTitle title={item?.direction_from}/>
                         <ItemDate item={item} time={time}/>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ export const Item = ({item, time}: any) => {
                 </div>
                 <div className="col-3">
                     <div className={styles.item}>
-                        <ItemTitle title={item.direction_to}/>
+                        <ItemTitle title={item?.direction_to}/>
                     </div>
                 </div>
                 <div className="col-3">
