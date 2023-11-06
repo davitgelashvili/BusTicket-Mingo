@@ -31,7 +31,7 @@ export const Filter = () => {
     
     useEffect(()=>{
         dispatch(filterDataAction.changeFilterDate(getDate))
-    }, [getDate])
+    }, [getDate, dispatch])
 
     return (
         <div className={styles.filter}>
