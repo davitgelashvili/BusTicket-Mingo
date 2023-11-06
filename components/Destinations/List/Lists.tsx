@@ -18,6 +18,26 @@ export const Lists = ({date}:any) => {
     const searchParamsDate = useSearchParams().get('date');
     const filter = useSelector((state:any) => state.filterData)
     const dispatch = useDispatch()
+    const time = [
+        '07 : 00',
+        '08 : 00',
+        '09 : 00',
+        '10 : 00',
+        '11 : 00',
+        '12 : 00',
+        '13 : 00',
+        '14 : 00',
+        '15 : 00',
+        '16 : 00',
+        '17 : 00',
+        '18 : 00',
+        '19 : 00',
+        '20 : 00',
+        '21 : 00',
+        '22 : 00',
+        '23 : 00',
+        '23 : 55',
+    ]
 
     useEffect(()=>{
         router.push(`destination?from=${filter.from}&to=${filter.to}&date=${filter.date}`)
@@ -25,9 +45,11 @@ export const Lists = ({date}:any) => {
         api(`cars?from=${searchParamsFrom}&to=${searchParamsTo}&getDate=${searchParamsDate}`)
         .then((res:any)=> {
             setData([])
-            res?.map((item:any) => {
-                setData((e:any) => [...e, item])
-            })
+            setData(res[0])
+            // res?.map((item:any) => {
+            //     setData((e:any) => [...e, item])
+            // })
+            console.log(res[0])
         })
         .finally(()=>{
             setLoading(false)
@@ -43,10 +65,12 @@ export const Lists = ({date}:any) => {
                 loading && <Loader />
             }
             {
-                data?.map((item:any) => {
-                    return (
-                        <Item key={item._id} item={item} />
-                    )
+                time.map((t:any) => {
+                    if(new Date().getHours() < t.split(' ')[0]){
+                        return (
+                            <Item key={t} item={data} time={t} />
+                        )
+                    }
                 })
             }
         </div>
