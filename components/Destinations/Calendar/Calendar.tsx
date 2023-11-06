@@ -37,7 +37,7 @@ const Calendar = () => {
                 calendarStartDay={1}
                 onChange={(date:any) => {
                     setFullDate(date)
-                    dispatch(filterDataAction.changeCalendarDate(String(date)))
+                    // dispatch(filterDataAction.changeCalendarDate(String(date)))
                 }}
             />
         </div>
