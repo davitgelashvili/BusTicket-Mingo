@@ -14,7 +14,6 @@ export const Lists = ({date}:any) => {
     const router = useRouter()
     const [data,setData] = useState<any>([])
     const [loading, setLoading] = useState(true)
-    const [dataListDate, setDataListDate] = useState(false)
     const searchParamsFrom = useSearchParams().get('from');
     const searchParamsTo = useSearchParams().get('to');
     const searchParamsDate = useSearchParams().get('date');
@@ -60,11 +59,7 @@ export const Lists = ({date}:any) => {
         })
     },[searchParamsFrom, searchParamsTo, searchParamsDate])
 
-    useEffect(()=>{
-        if(searchParamsDate?.split('-')[0] == useDateFormat(new Date()).getDate()){
-            setDataListDate(true)
-        }
-    }, [dataListDate])
+    const x = useDateFormat(new Date()).getDate()
 
     return (
         <div className={styles.list}>
@@ -72,8 +67,8 @@ export const Lists = ({date}:any) => {
                 loading && <Loader />
             }
             {
-                dataListDate ? time.map((t:any) => {
-                    if(searchParamsDate?.split('-')[0] == useDateFormat(new Date()).getDate()){
+                data ? time.map((t:any) => {
+                    if(searchParamsDate?.split('-')[0] == x){
                         if(new Date().getHours() < t.split(' ')[0]){
                             return (
                                 <Item key={t} item={data} time={t} />

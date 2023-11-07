@@ -70,7 +70,7 @@ const AddCar = () => {
 
     const handleClick = async(e:any) => {
         e.preventDefault()
-        await axios.post(`http://localhost:8000/cars`, inputValue)
+        await axios.post(`https://mingo-back.vercel.app/cars`, inputValue)
         .finally(()=>{
             console.log('დაემატა')
         })
