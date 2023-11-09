@@ -1,7 +1,7 @@
 module.exports = {
     en: {
         cars: {
-            header: 'Our cars',
+            header: 'Our Cars',
         }
     },
     ka: {

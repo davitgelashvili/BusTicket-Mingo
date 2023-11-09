@@ -4,7 +4,7 @@ module.exports = {
             from: 'From',
             to: 'To',
             date: 'Date',
-            placeholder: 'choose',
+            placeholder: 'Choose',
         }
     },
     ka: {

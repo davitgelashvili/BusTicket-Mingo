@@ -13,6 +13,12 @@
     position: relative;
     background-color: transparent;
 
+    &__navigation {
+        &--next {
+            display: none;
+        }
+    }
+
     &__month-container,
     &__time-container  {
         float: left;
@@ -62,27 +68,54 @@
         align-items: center;
         justify-content: center;
         font-size: 13px;
-        color: #000;
+        color: #fff;
         border-radius: 50%;
         cursor: pointer;
         font-family: font;
 
         &--disabled {
-            color: #cecece;
+            color: #000;
             cursor: default;
         }
 
         &--today {
             background-color: #cecece;
+            color: #000;
         }
 
         &--selected {
-            background-color: black;
+            background-color: #41b7d3 !important;
             color: #fff;
         }
 
         &--outside-month{
-            color: #cecece;
+            color: #000;
+        }
+    }
+}
+
+
+.calendar {
+    .react-datepicker {
+        &__day {
+            color: #000;
+    
+            &--disabled {
+                color: #cecece;
+            }
+    
+            &--today {
+                background-color: #cecece;
+            }
+    
+            &--selected {
+                background-color: #41b7d3 !important;
+                color: #fff;
+            }
+    
+            &--outside-month{
+                color: #cecece;
+            }
         }
     }
 }

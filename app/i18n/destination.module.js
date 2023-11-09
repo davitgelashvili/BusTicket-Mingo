@@ -1,10 +1,10 @@
 module.exports = {
     en: {
         locationDestination: {
-            header: 'location destination',
+            header: 'Location Destination',
         },
         touristDestination: {
-            header: 'turist destination',
+            header: 'Turist Destination',
         }
     },
     ka: {

@@ -5,6 +5,7 @@ import styles from './Navigation.module.scss'
 import Image from 'next/image'
 import logo from '@/public/img/logo.svg'
 import { useTranslation } from 'react-i18next'
+import Translate from '../Translate/Translate'
 
 
 export const Navigation = () => {
@@ -52,10 +53,8 @@ export const Navigation = () => {
                             })}
                         </ul>
                     </div>
-                    <div className='col-2 d-flex justify-content-end align-items-center'>
-                        <Link href={''} className={styles.login}>
-                            შესვლა
-                        </Link>
+                    <div className='col-2 d-flex justify-content-end'>
+                        <Translate />
                     </div>
                 </div>
             </div>

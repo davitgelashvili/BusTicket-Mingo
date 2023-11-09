@@ -1,9 +1,9 @@
 module.exports = {
     en: {
         menu: {
-            home: 'home',
-            aboutus: 'about us',
-            contact: 'contact',
+            home: 'Home',
+            aboutus: 'About Us',
+            contact: 'Contact',
         }
     },
     ka: {

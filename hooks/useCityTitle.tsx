@@ -21,8 +21,8 @@ const useCityTitle = (title:any) => {
             case 'poti':
                 setMyTitle('city.poti')
                 break;
-        
             default:
+                setMyTitle(title)
                 break;
         }
     }, [title])

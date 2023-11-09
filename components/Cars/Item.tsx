@@ -8,7 +8,6 @@ export const Item = ({item}: any) => {
             <figure className={styles.cover}>
                 <Image src={item.img} width={0} height={0} alt='cover' />
             </figure>
-            hi
         </div>
     )
 }

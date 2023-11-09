@@ -10,7 +10,7 @@ module.exports = {
         },
         internet: {
             title: 'Internet',
-            desc: 'free wifi internet',
+            desc: 'free Wi-Fi internet',
         },
         comfort: {
             title: 'Comfort',

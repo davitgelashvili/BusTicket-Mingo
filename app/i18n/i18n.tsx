@@ -8,11 +8,12 @@ import destination from './destination.module'
 import cars from './cars.module'
 import services from './services.module'
 import city from './city.module'
+import slider from './slider.module'
 
 i18n
     .use(initReactI18next)
     .init({
-        fallbackLng: 'en',
+        fallbackLng: 'ka',
         resources: {
             en: {
                 translation: {
@@ -22,6 +23,7 @@ i18n
                     ...cars.en,
                     ...services.en,
                     ...city.en,
+                    ...slider.en,
                 }
             },
             ka: {
@@ -32,6 +34,7 @@ i18n
                     ...cars.ka,
                     ...services.ka,
                     ...city.ka,
+                    ...slider.ka,
                 }
             }
         }
