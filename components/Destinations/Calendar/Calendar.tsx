@@ -43,7 +43,7 @@ const Calendar = () => {
                     ( new Date(item.date).getDate() > new Date().getDate() ) && 
                     ( e.getAttribute('aria-disabled') == 'false' )
                 ){
-                    e.style.background = 'rgb(64 183 211 / 29%)'
+                    e.setAttribute('isticket', 'true')
                 }
             })
         })

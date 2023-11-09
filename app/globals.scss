@@ -96,6 +96,10 @@
 
 
 .calendar {
+    [isticket="true"]{
+        background-color: rgb(64 183 211 / 29%);
+    }
+    
     .react-datepicker {
         &__day {
             color: #000;
