@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initalData = {
     from: '',
     to: '',
-    date:  `${useDateFormat(new Date()).getDate()}-${useDateFormat(new Date()).getMonth()}`,
+    date:  String(new Date()),
     calendarDate:  String(new Date()),
 }
 

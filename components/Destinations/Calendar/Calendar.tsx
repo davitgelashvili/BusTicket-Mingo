@@ -7,59 +7,41 @@ import { filterDataAction } from '@/store/filter'
 import useDateFormat from "@/hooks/useDateFormat"
 import { useRouter, useSearchParams } from "next/navigation"
 import api from "@/http/api"
+import { Datepicker, DatepickerEvent } from "@meinefinsternis/react-horizontal-date-picker"
+import { ka } from "date-fns/locale";
+import styles from './Calendar.module.scss'
 
 const Calendar = () => {
-    const [data, setData] = useState([])
+    const filter = useSelector((state:any) => state.filterData)
     const router = useRouter()
-    const [fullDate, setFullDate] = useState()
-    const dispatch = useDispatch()
-    const getDate = `${useDateFormat(fullDate).getDate()}-${useDateFormat(fullDate).getMonth()}`
     const searchParamsFrom = useSearchParams().get('from');
     const searchParamsTo = useSearchParams().get('to');
     const searchParamsDate = useSearchParams().get('date');
-    const filter = useSelector((state:any) => state.filterData)
+    const [date, setDate] = useState<String>(String(new Date()));
+    const dispatch = useDispatch()
+    const urlDate = `${useDateFormat(filter.date).getDate()}-${useDateFormat(filter.date).getMonth()}`
+
+    const handleChange = (d: DatepickerEvent) => {
+        setDate(String(d[0]))
+    };
+
+    useEffect(()=>{
+        dispatch(filterDataAction.changeFilterDate(String(date)))
+    },[date, dispatch])
     
     useEffect(()=>{
-        router.push(`destination?from=${searchParamsFrom}&to=${searchParamsTo}&date=${getDate}`)
-    }, [getDate])
-
-    useEffect(()=>{
-        api(`cars?from=${searchParamsFrom}&to=${searchParamsTo}`)
-        .then((res:any)=> {
-            setData([])
-            setData(res)
-        })
-        dispatch(filterDataAction.changeFilterFrom(searchParamsFrom))
-        dispatch(filterDataAction.changeFilterTo(searchParamsTo))
-        dispatch(filterDataAction.changeFilterDate(searchParamsDate))
-        router.push(`destination?from=${searchParamsFrom}&to=${searchParamsTo}&date=${searchParamsDate}`)
-    }, [searchParamsFrom, searchParamsTo, searchParamsDate])
-
-    useEffect(()=>{
-        data && data.map((item:any) => {
-            document.querySelectorAll('.react-datepicker__day').forEach((e)=>{
-                if(
-                    ( new Date(item.date).getDate() == Number(e.textContent) ) &&
-                    ( new Date(item.date).getDate() > new Date().getDate() ) && 
-                    ( e.getAttribute('aria-disabled') == 'false' )
-                ){
-                    e.setAttribute('isticket', 'true')
-                }
-            })
-        })
-    }, [data])
+        router.push(`destination?from=${searchParamsFrom}&to=${searchParamsTo}&date=${urlDate}`)
+    },[filter.date])
 
     return (
-        <div className="calendar">
-            <DatePicker
-                selected={new Date(filter.calendarDate)}
-                inline={true}
-                minDate={new Date()}
-                calendarStartDay={1}
-                onChange={(date:any) => {
-                    setFullDate(date)
-                    dispatch(filterDataAction.changeCalendarDate(String(date)))
-                }}
+        <div className={styles.calendar}>
+            <Datepicker 
+                onChange={handleChange}
+                locale={ka}
+                startValue={new Date(filter.date)}
+                endValue={new Date(filter.date)}
+                startDate={new Date()}
+            
             />
         </div>
     )

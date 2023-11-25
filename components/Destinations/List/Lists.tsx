@@ -11,13 +11,11 @@ import { filterDataAction } from '@/store/filter'
 import useDateFormat from '@/hooks/useDateFormat'
 
 export const Lists = ({date}:any) => {
-    const router = useRouter()
     const [data,setData] = useState<any>([])
     const [loading, setLoading] = useState(true)
     const searchParamsFrom = useSearchParams().get('from');
     const searchParamsTo = useSearchParams().get('to');
     const searchParamsDate = useSearchParams().get('date');
-    const filter = useSelector((state:any) => state.filterData)
     const dispatch = useDispatch()
     const time = [
         '07 : 00',
@@ -41,21 +39,17 @@ export const Lists = ({date}:any) => {
     ]
 
     useEffect(()=>{
-        router.push(`destination?from=${filter.from}&to=${filter.to}&date=${filter.date}`)
         setLoading(true)
         api(`cars?from=${searchParamsFrom}&to=${searchParamsTo}&getDate=${searchParamsDate}`)
         .then((res:any)=> {
             setData([])
             setData(res[0])
-            // res?.map((item:any) => {
-            //     setData((e:any) => [...e, item])
-            // })
         })
         .finally(()=>{
             setLoading(false)
             dispatch(filterDataAction.changeFilterFrom(searchParamsFrom))
             dispatch(filterDataAction.changeFilterTo(searchParamsTo))
-            dispatch(filterDataAction.changeFilterDate(searchParamsDate))
+            // dispatch(filterDataAction.changeFilterDate(searchParamsDate))
         })
     },[searchParamsFrom, searchParamsTo, searchParamsDate])
 

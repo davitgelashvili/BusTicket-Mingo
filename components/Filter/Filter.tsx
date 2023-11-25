@@ -16,22 +16,27 @@ import { filterDataAction } from '@/store/filter'
 import useCityTitle from '@/hooks/useCityTitle'
 
 export const Filter = () => {
-    const [fullDate, setFullDate] = useState(new Date())
-    const router = useRouter()
+    const filter = useSelector((state:any) => state.filterData)
+    const [date, setDate] = useState(filter.date)
     const {t} = useTranslation()
     const dispatch = useDispatch()
-    const filter = useSelector((state:any) => state.filterData)
-    const getDate = `${useDateFormat(fullDate).getDate()}-${useDateFormat(fullDate).getMonth()}`
+    const router = useRouter()
+    const dateFormat = `${useDateFormat(filter.date).getDate()}-${useDateFormat(filter.date).getMonth()}`
+    const [urlDate, setUrlDate] = useState('')
 
     const options = [
         { value: 'tbilisi', label: useCityTitle('tbilisi') },
         { value: 'batumi', label: useCityTitle('batumi') },
         { value: 'poti', label: useCityTitle('poti') }
     ]
-    
+
     useEffect(()=>{
-        dispatch(filterDataAction.changeFilterDate(getDate))
-    }, [getDate, dispatch])
+        dispatch(filterDataAction.changeFilterDate(String(date)))
+    }, [date, dispatch])
+
+    useEffect(()=>{
+        setUrlDate(dateFormat)
+    },[filter.date])
 
     return (
         <div className={styles.filter}>
@@ -61,16 +66,15 @@ export const Filter = () => {
                         <CustomCalendar 
                             icon={dateIcon} 
                             title={t('filter.date')} 
-                            value={filter.date}
+                            value={`${useDateFormat(filter.date).getDate()} / ${useDateFormat(filter.date).getMonth()}`}
                             >
                             <DatePicker
                                 className={'filter-calendar'}
-                                selected={new Date(filter.calendarDate)}
+                                selected={new Date(filter.date)}
                                 inline={true}
                                 minDate={new Date()}
                                 onChange={(date:any) => {
-                                    setFullDate(date)
-                                    dispatch(filterDataAction.changeCalendarDate(String(date)))
+                                    setDate(date)
                                 }}
                             />
                         </CustomCalendar>
@@ -83,7 +87,7 @@ export const Filter = () => {
                                     filter.from !== ''&&
                                     filter.to !== ''
                                 ) {
-                                    router.push(`destination?from=${filter.from}&to=${filter.to}&date=${filter.date}`)
+                                    router.push(`destination?from=${filter.from}&to=${filter.to}&date=${urlDate}`)
                                 }
                             }}
                             >
