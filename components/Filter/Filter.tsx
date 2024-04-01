@@ -41,8 +41,8 @@ export const Filter = () => {
     return (
         <div className={styles.filter}>
             <div className='container'>
-                <div className={styles.content}>
-                    <div className={styles.item}>
+                <div className={`${styles.content} row`}>
+                    <div className={`${styles.item} col-12 col-lg-3`}>
                         <CustomSelect 
                             icon={fromIcon} 
                             title={t('filter.from')} 
@@ -52,7 +52,7 @@ export const Filter = () => {
                                 dispatch(filterDataAction.changeFilterFrom(e))
                             }}/>
                     </div>
-                    <div className={styles.item}>
+                    <div className={`${styles.item} col-12 col-lg-3`}>
                         <CustomSelect 
                             icon={toIcon} 
                             title={t('filter.to')} 
@@ -62,7 +62,7 @@ export const Filter = () => {
                                 dispatch(filterDataAction.changeFilterTo(e))
                             }}/>
                     </div>
-                    <div className={styles.item}>
+                    <div className={`${styles.item} col-12 col-lg-3`}>
                         <CustomCalendar 
                             icon={dateIcon} 
                             title={t('filter.date')} 

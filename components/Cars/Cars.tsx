@@ -41,7 +41,7 @@ export const Cars = () => {
         <div className={styles.cars}>
             <div className='container'>
                 <SectionTitle title={t('cars.header')} />
-                <div className={styles.list}>
+                <div className={`${styles.list} row`}>
                     {
                         data.map(item => {
                             return (

@@ -12,18 +12,8 @@ export const Navigation = () => {
     const {t} = useTranslation()
     const data = [
         {
-            id:1,
+            id:3532,
             title: t('menu.home'),
-            url: '/'
-        },
-        {
-            id:2,
-            title: t('menu.aboutus'),
-            url: '/'
-        },
-        {
-            id:3,
-            title: t('menu.contact'),
             url: '/'
         }
     ]
@@ -39,7 +29,7 @@ export const Navigation = () => {
                             .GE
                         </div>
                     </div>
-                    <div className='col-8 d-flex align-items-center'>
+                    <div className='col-6 d-flex align-items-center'>
                         <ul className={styles.list}>
                             {data && data.map( (item:any) => {
                                 return (
@@ -53,7 +43,7 @@ export const Navigation = () => {
                             })}
                         </ul>
                     </div>
-                    <div className='col-2 d-flex justify-content-end'>
+                    <div className='col-12 col-lg-4 d-flex justify-content-end'>
                         <Translate />
                     </div>
                 </div>

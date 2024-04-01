@@ -36,48 +36,6 @@ export const Destinations = () => {
         }
     ]
 
-    const data = [
-        {
-            id: 15753,
-            fromName: 'თბილისი',
-            toName: 'ბათუმი',
-            fromValue: 'tbilisi',
-            toValue: 'batumi',
-            img: 'https://tkt.ge/static/images/batumi.jpg'
-        },
-        {
-            id: 24577,
-            fromName: 'ბათუმი',
-            toName: 'თბილისი',
-            fromValue: 'batumi',
-            toValue: 'tbilisi',
-            img: 'https://tkt.ge/static/images/tbilisi.jpg'
-        },
-        {
-            id: 53346,
-            fromName: 'თბილისი',
-            toName: 'ვლადიკავკაზი',
-            fromValue: 'tbilisi',
-            toValue: 'poti',
-            img: 'https://tkt.ge/static/images/foti.jpg'
-        },
-        {
-            id: 44378,
-            fromName: 'თბილისი',
-            toName: 'ფოთი',
-            fromValue: 'tbilisi',
-            toValue: 'poti',
-            img: 'https://tkt.ge/static/images/foti.jpg'
-        },
-        {
-            id: 55889,
-            fromName: 'თბილისი',
-            toName: 'ფოთი',
-            fromValue: 'tbilisi',
-            toValue: 'poti',
-            img: 'https://tkt.ge/static/images/foti.jpg'
-        }
-    ]
 
     return (
         <>
@@ -102,35 +60,6 @@ export const Destinations = () => {
                                 return (
                                     <SwiperSlide key={item.id}>
                                         <DestinationOffer style={{height: '195px'}} item={item}/>
-                                    </SwiperSlide>
-                                )
-                            })
-                        }
-                    </Swiper>
-                </div>
-            </div>
-        </div>
-        <div className={styles.destinations}>
-            <div className='container'>
-                <SectionTitle title={t('touristDestination.header')} />
-                <div className={styles.list}>
-                    <Swiper
-                        spaceBetween={25}
-                        slidesPerView={2}
-                        breakpoints={{
-                            768: {
-                                slidesPerView: 3,
-                            },
-                            1200: {
-                                slidesPerView: 5,
-                            },
-                        }}
-                        >
-                        {
-                            data.map(item => {
-                                return (
-                                    <SwiperSlide key={item.id} >
-                                        <DestinationOffer style={{height: '325px'}} item={item}/>
                                     </SwiperSlide>
                                 )
                             })

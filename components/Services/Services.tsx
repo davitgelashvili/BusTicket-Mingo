@@ -44,7 +44,7 @@ const Services = () => {
                     {
                         data?.map( (item:any) => {
                             return (
-                                <div className="col-6 col-lg-3 d-flex justify-content-center" key={item.id} >
+                                <div className="col-12 col-lg-3 d-flex justify-content-center" key={item.id} >
                                     <Item item={item}/>
                                 </div>
                             )
