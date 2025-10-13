@@ -42,8 +42,9 @@ export const Lists = ({date}:any) => {
         setLoading(true)
         api(`cars?from=${searchParamsFrom}&to=${searchParamsTo}&getDate=${searchParamsDate}`)
         .then((res:any)=> {
+            console.log(res)
             setData([])
-            setData(res[0])
+            setData(res)
         })
         .finally(()=>{
             setLoading(false)
@@ -53,24 +54,22 @@ export const Lists = ({date}:any) => {
         })
     },[searchParamsFrom, searchParamsTo, searchParamsDate])
 
+    
     const x = useDateFormat(new Date()).getDate()
-
+    
     return (
         <div className={styles.list}>
             {
                 loading && <Loader />
             }
+            { console.log(new Date().getTime()) }
             {
-                data ? time.map((t:any) => {
-                    if(searchParamsDate?.split('-')[0] == x){
-                        if(new Date().getHours() < t.split(' ')[0]){
-                            return (
-                                <Item key={t} item={data} time={t} />
-                            )
-                        }
-                    }else {
+                data ? data?.map((item:any) => {
+                    console.log(new Date().getTime(), new Date(item?.date).getTime(), item)
+                    if(new Date().getTime() < new Date(item?.date).getTime()){
+                        // console.log(item)
                         return (
-                            <Item key={t} item={data} time={t} />
+                            <Item key={item._id} item={item} />
                         )
                     }
                 }) : (

@@ -9,15 +9,15 @@ import ItemDate from './ItemDate'
 import ItemTitle from './ItemTitle'
 import useDateFormat from '@/hooks/useDateFormat'
 
-export const Item = ({item, time}: any) => {
+export const Item = ({item}: any) => {
 
     return (
-        <div key={item?.id} className={styles.item_list}>
+        <div key={item?._id} className={styles.item_list}>
             <div className="row">
                 <div className="col-3">
                     <div className={styles.item}>
                         <ItemTitle title={item?.direction_from}/>
-                        <ItemDate item={item} time={time}/>
+                        {/* <ItemDate item={item} time={time}/> */}
                     </div>
                 </div>
                 <div className="col-1">
@@ -32,8 +32,8 @@ export const Item = ({item, time}: any) => {
                 </div>
                 <div className="col-3">
                     <div className={styles.item}>
-                        {/* <Link href={`/detail/${item._id}`}>ნახვა</Link> */}
-                        <Link target='_blanck' href={`https://api.whatsapp.com/send?phone=995558424849`}>
+                        <Link href={`/detail/${item._id}`}>ნახვა</Link>
+                        <Link target='_blanck' href={`https://api.whatsapp.com/send?phone=995591111996`}>
                             <Image src={caricon} width={20} height={20} alt='icon' /> 
                             დაჯავშნე
                         </Link>
