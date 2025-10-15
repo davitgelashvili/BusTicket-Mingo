@@ -16,7 +16,7 @@ export const Destinations = () => {
             toName: 'ბათუმი',
             fromValue: 'tbilisi',
             toValue: 'batumi',
-            img: 'https://tkt.ge/static/images/batumi.jpg'
+            img: 'https://image.tkt.ge/unsafe/rs:fit:3840:/format:webp/plain/https://static.tkt.ge/next/static/images/batumi.jpg'
         },
         {
             id: 22547,
@@ -29,10 +29,10 @@ export const Destinations = () => {
         {
             id: 323464,
             fromName: 'თბილისი',
-            toName: 'ქუთაისი',
+            toName: 'ფოთი',
             fromValue: 'tbilisi',
             toValue: 'poti',
-            img: 'https://tkt.ge/static/images/foti.jpg'
+            img: 'https://image.tkt.ge/unsafe/rs:fit:3840:/format:webp/plain/https://static.tkt.ge/next/static/images/foti.jpg'
         }
     ]
 

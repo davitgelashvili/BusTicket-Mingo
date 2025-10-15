@@ -8,15 +8,24 @@ import Image from 'next/image'
 import ItemDate from './ItemDate'
 import ItemTitle from './ItemTitle'
 import useDateFormat from '@/hooks/useDateFormat'
+import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
-export const Item = ({item}: any) => {
+export const Item = ({ item }: any) => {
+    const searchParamsFrom = useSearchParams().get('from');
+    const searchParamsTo = useSearchParams().get('to');
+    const searchParamsDate = useSearchParams().get('date');
+
+    useEffect(() => {
+        return 
+    }, [searchParamsFrom, searchParamsTo, searchParamsDate])
 
     return (
         <div key={item?._id} className={styles.item_list}>
             <div className="row">
                 <div className="col-3">
                     <div className={styles.item}>
-                        <ItemTitle title={item?.direction_from}/>
+                        <ItemTitle title={item?.direction_from} />
                         {/* <ItemDate item={item} time={time}/> */}
                     </div>
                 </div>
@@ -27,14 +36,14 @@ export const Item = ({item}: any) => {
                 </div>
                 <div className="col-3">
                     <div className={styles.item}>
-                        <ItemTitle title={item?.direction_to}/>
+                        <ItemTitle title={item?.direction_to} />
                     </div>
                 </div>
                 <div className="col-3">
                     <div className={styles.item}>
                         <Link href={`/detail/${item._id}`}>ნახვა</Link>
                         <Link target='_blanck' href={`https://api.whatsapp.com/send?phone=995591111996`}>
-                            <Image src={caricon} width={20} height={20} alt='icon' /> 
+                            <Image src={caricon} width={20} height={20} alt='icon' />
                             დაჯავშნე
                         </Link>
                     </div>
