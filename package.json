@@ -8,6 +8,9 @@
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "@meinefinsternis/react-horizontal-date-picker": "^1.0.1",
     "@reduxjs/toolkit": "^1.9.5",
